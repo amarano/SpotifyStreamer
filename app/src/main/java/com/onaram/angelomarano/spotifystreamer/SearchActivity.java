@@ -1,16 +1,18 @@
 package com.onaram.angelomarano.spotifystreamer;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 public class SearchActivity extends ListActivity {
+
+    private ArrayList<ArtistSearchResults> searchResults;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,10 +28,11 @@ public class SearchActivity extends ListActivity {
     }
 
     public void searchForArtist(String query){
-        Toast toast = new Toast(this.getApplicationContext());
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setText(query);
-        toast.show();
+        searchResults = new ArrayList<ArtistSearchResults>();
+        searchResults.add(new ArtistSearchResults(query));
+
+        ArtistSearchResultAdapter adapter = new ArtistSearchResultAdapter(this, R.layout.artist_row_layout, searchResults);
+        setListAdapter(adapter);
     }
 
     @Override

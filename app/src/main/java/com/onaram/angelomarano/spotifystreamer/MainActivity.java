@@ -1,9 +1,15 @@
 package com.onaram.angelomarano.spotifystreamer;
 
 import android.app.Activity;
+import android.app.SearchManager;
+import android.app.SearchableInfo;
+import android.content.ComponentName;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.SearchView;
 
 
 public class MainActivity extends Activity {
@@ -16,8 +22,27 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        // Inflate the options menu from XML
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+
+        // Get the SearchView and set the searchable configuration
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.menu_item_search).getActionView();
+        // Assumes current activity is the searchable activity
+        ComponentName componentName = new ComponentName(this.getApplicationContext(), SearchActivity.class);
+        SearchableInfo searchableInfo = searchManager.getSearchableInfo(componentName);
+
+        searchView.setSearchableInfo(searchableInfo);
+        searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
+
+        return true;
+    }
+
+    @Override
+    public boolean onSearchRequested() {
+        Bundle appData = new Bundle();
+        startSearch(null, false, appData, false);
         return true;
     }
 
