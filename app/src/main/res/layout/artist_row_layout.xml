@@ -5,18 +5,20 @@
     android:padding="6dip">
 
     <ImageView
-        android:id="@+id/icon"
+        android:id="@+id/artistArt"
 
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0"
         android:layout_marginRight="6dip" />
 
     <LinearLayout
         android:orientation="vertical"
 
-        android:layout_width="0dip"
+        android:layout_width="100dip"
         android:layout_weight="1"
-        android:layout_height="fill_parent">
+        android:layout_height="100dip">
 
         <TextView
             android:layout_width="fill_parent"
@@ -24,15 +26,8 @@
             android:layout_weight="1"
 
             android:gravity="center_vertical"
-            android:id="@+id/artistName" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1"
-
-            android:singleLine="true"
-            android:ellipsize="marquee" />
+            android:id="@+id/artistName"
+            android:textColor="#ff14222b" />
 
     </LinearLayout>
 

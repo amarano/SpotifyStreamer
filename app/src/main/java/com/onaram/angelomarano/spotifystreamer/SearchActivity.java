@@ -7,6 +7,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,11 +41,17 @@ public class SearchActivity extends ListActivity {
     }
 
     @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_search, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -74,7 +82,7 @@ public class SearchActivity extends ListActivity {
             List<Artist> artists = results.artists.items;
 
             for (Artist artist : artists) {
-                ArtistSearchResults result = new ArtistSearchResults(artist.name);
+                ArtistSearchResults result = new ArtistSearchResults(artist.name, artist.images.get(0).url);
                 searchResults.add(result);
             }
             return searchResults;
