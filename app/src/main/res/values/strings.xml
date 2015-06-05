@@ -6,4 +6,5 @@
     <string name="search_hint">Search artists</string>
     <string name="title_activity_search">SearchActivity</string>
     <string name="action_bar_button_search">Search</string>
+    <string name="title_activity_album_list">AlbumListActivity</string>
 </resources>

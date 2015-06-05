@@ -6,29 +6,23 @@ package com.onaram.angelomarano.spotifystreamer;
 public class ArtistSearchResults {
     private String albumName;
     private String artistArtUri;
+    private String id;
 
-    public ArtistSearchResults(String name) {
-        albumName = name;
-    }
-
-    public ArtistSearchResults(String name, String artUri) {
+    public ArtistSearchResults(String name, String url, String id) {
         this.albumName = name;
-        this.artistArtUri = artUri;
+        this.artistArtUri = url;
+        this.id = id;
     }
 
     public String getAlbumName() {
         return albumName;
     }
 
-    public void setAlbumName(String albumName) {
-        this.albumName = albumName;
-    }
-
     public String getArtistArtUri() {
         return artistArtUri;
     }
 
-    public void setArtistArtUri(String artistArtUri) {
-        this.artistArtUri = artistArtUri;
+    public String getId() {
+        return id;
     }
 }
